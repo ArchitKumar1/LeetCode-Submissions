@@ -1,0 +1,1 @@
+{"id":465188834,"lang":"bash","time":"9 months, 2 weeks","timestamp":1615220471,"status_display":"Wrong Answer","runtime":"N/A","url":"/submissions/detail/465188834/","is_pending":"Not Pending","title":"Tenth Line","memory":"N/A","code":"sed -n '2p' < file.txt ","compare_result":"0001100","title_slug":"tenth-line"}

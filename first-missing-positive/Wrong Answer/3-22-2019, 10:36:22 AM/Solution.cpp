@@ -1,0 +1,24 @@
+// https://leetcode.com/problems/first-missing-positive
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+        if(nums.size() == 0) return 0;
+        long long a = 0;
+        long long mi = *min_element(nums.begin(),nums.end());
+        long long ma = *max_element(nums.begin(),nums.end());
+        for(long long i=mi;i<=ma;i++){
+            a=a^i;
+        }
+        for(long long i=0;i<nums.size();i++){
+            a=a^nums[i];
+        }
+        if(a == 0){
+            if(ma < 0) return 0;
+            else if(mi <= 0) return ma + 1;
+            else return mi - 1;
+            
+        }
+        else return (int)a;
+    }
+};

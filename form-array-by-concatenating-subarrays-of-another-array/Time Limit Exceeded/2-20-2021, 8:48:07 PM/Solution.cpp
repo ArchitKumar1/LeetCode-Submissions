@@ -1,0 +1,35 @@
+// https://leetcode.com/problems/form-array-by-concatenating-subarrays-of-another-array
+
+class Solution {
+public:
+    bool canChoose(vector<vector<int>>& groups, vector<int>& nums) {
+        
+        int n = nums.size();
+        
+        int m = groups.size();
+    
+        map<vector<int>,int> m1;
+    
+        function<bool(int,int)> dfs = [&](int g,int i) -> bool{
+           // cout << g << " " << i << endl;
+            if(g == m)return 1;
+            if(i == n) return 0;
+            vector<int> curr;
+            bool ans = 0;
+            ans|= dfs(g,i+1);
+            for(int j = i;j<n;j++){
+                curr.push_back(nums[j]);
+                if(curr == groups[g]){
+                    // for(int c : curr){
+                    //     cout << c << " ";
+                    // }
+                    // cout << endl;
+                    ans |= dfs(g+1,j+1);
+                }
+            }
+            return ans; 
+        };
+        return dfs(0,0);
+        
+    }
+};
